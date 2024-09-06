@@ -3,17 +3,20 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '@layouts/Default.astro';
 import BlogList from '@components/blog/BlogList.astro';
+
 import { Button } from '@eliancodes/brutal-ui';
 
+
+
 export async function getStaticPaths() {
-  const allPosts = await getCollection('blog').then((collection) =>
+  const allPosts = await getCollection('blog').then((collection: any[]) =>
     collection.reverse()
   );
 
   const tags: string[] = [];
 
-  allPosts.forEach((post) => {
-    post.data.tags.forEach((tag) => {
+  allPosts.forEach((post: { data: { tags: any[]; }; }) => {
+    post.data.tags.forEach((tag: string) => {
       tags.push(tag.toLowerCase());
     });
   });
@@ -23,8 +26,8 @@ export async function getStaticPaths() {
       params: { tag },
       props: {
         tag,
-        blogposts: allPosts.filter((post) =>
-          post.data.tags.map((tag) => tag.toLowerCase()).includes(tag)
+        blogposts: allPosts.filter((post: { data: { tags: any[]; }; }) =>
+          post.data.tags.map((tag: string) => tag.toLowerCase()).includes(tag)
         ),
       },
     };

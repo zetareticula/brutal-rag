@@ -5,7 +5,7 @@ interface Props {
 
 const navigationItems = [
   { name: 'Home', url: '/' },
-  { name: 'Blog', url: '/blog/' },
+  { name: 'Klever', url: '/blog/' },
 ];
 
 const socialIcons = [
@@ -28,10 +28,10 @@ const { pageTitle } = Astro.props;
 <header class='border-b-4 border-black flex justify-between p-6 items-center'>
   {pageTitle && <h1 class='hidden'>{pageTitle}</h1>}
   <a href='/' title='Back to Home'>
-    <p class='righteous md:text-5xl'>Brutal</p>
+    <p class='righteous md:text-5xl'>Klever AI QA</p>
   </a>
   <nav class='hidden md:inline-block'>
-    <h2 class='hidden'>Navigation</h2>
+    <h2 class='hidden'>Navigation with Searches and Questions with Oracles.</h2>
     <ul class='flex gap-8 poppins'>
       {
         navigationItems.map((item) => (
@@ -63,7 +63,7 @@ const { pageTitle } = Astro.props;
     </ul>
   </nav>
   <nav class='md:hidden flex'>
-    <h2 class='hidden'>Mobile Navigation</h2>
+    <h2 class='hidden'>Simple AI with Search</h2>
     <ul>
       <li><a href='/blog/'>Blog</a></li>
     </ul>

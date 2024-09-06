@@ -2,18 +2,38 @@
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/Default.astro';
 import BlogList from '@components/blog/BlogList.astro';
+import { CollectionEntry } from 'astro:content';
 
-const posts = await getCollection('blog').then((collection) =>
+export async function getStaticProps() {
+  const posts = await getCollection('blog').then((collection: any[]) =>
+    collection.reverse()
+  );
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
+
+
+
+
+const posts = await getCollection('blog').then((collection: any[]) =>
   collection.reverse()
 );
 ---
 
 <Layout
-  title='Blog'
-  description='Brutal Blog | On this page you can find a collection of blogposts'
-  pageTitle='Brutal Blog'
+  title='Klever'
+  description='Simple Answers to Complex Questions'
+  pageTitle='Brutally Klever'
 >
   <main class='bg-green p-6'>
     <BlogList posts={posts} />
   </main>
 </Layout>
+
+
+
